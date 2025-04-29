@@ -50,7 +50,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess, setUser }) => {
         setSuccessMessage('Login successful!');
         setUser(formData);
         setTimeout(() => {
-          onLoginSuccess(formData, formResponse.form); // Pass both user and form data
+          onLoginSuccess(formData, formResponse.form); 
         }, 1500);
       } 
       else {
@@ -59,26 +59,14 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess, setUser }) => {
           setSuccessMessage('Registration successful!');
           setUser(formData);
           setTimeout(() => {
-            onLoginSuccess(formData, null); // No form data for new registration
+            onLoginSuccess(formData, null); 
           }, 1500);
         } else {
           setError(response.message);
         }
       }
       
-      // const response = isLogin
-      //   ? await loginUser(formData)
-      //   : await registerUser(formData);
-      
-      // if (response.success) {
-      //   setSuccessMessage(isLogin ? 'Login successful!' : 'Registration successful!');
-      //   setUser(formData);
-      //   setTimeout(() => {
-      //     onLoginSuccess();
-      //   }, 1500);
-      // } else {
-      //   setError(response.message);
-      // }
+    
     } catch (err) {
       setError(err instanceof Error ? err.message : `An error occurred during ${isLogin ? 'login' : 'registration'}`);
     } finally {
