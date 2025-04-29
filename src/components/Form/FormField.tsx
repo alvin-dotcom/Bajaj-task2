@@ -137,7 +137,7 @@ const FormField: React.FC<FormFieldProps> = ({ field, value, onChange, error }) 
     }
   };
 
-  // For checkbox type, we render differently
+  
   if (field.type === 'checkbox') {
     return (
       <div className="mb-4">
