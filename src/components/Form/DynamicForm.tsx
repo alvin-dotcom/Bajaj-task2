@@ -13,7 +13,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ form }) => {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const [sectionValidity, setSectionValidity] = useState<boolean[]>([]);
 
-  // Initialize section validity array
+  
   useEffect(() => {
     setSectionValidity(new Array(form.sections.length).fill(false));
   }, [form.sections.length]);
@@ -26,7 +26,8 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ form }) => {
       [fieldId]: value,
     }));
 
-    // Clear error for the field when it changes
+
+    
     if (errors[fieldId]) {
       setErrors((prev) => {
         const newErrors = { ...prev };
@@ -40,8 +41,9 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ form }) => {
     const currentSectionErrors = validateSection(currentSection.fields, formData);
     setErrors(currentSectionErrors);
     const isValid = Object.keys(currentSectionErrors).length === 0;
+
+
     
-    // Update section validity
     const newSectionValidity = [...sectionValidity];
     newSectionValidity[currentSectionIndex] = isValid;
     setSectionValidity(newSectionValidity);
@@ -64,19 +66,21 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ form }) => {
     
     if (validateCurrentSection()) {
       console.log('Form submitted with data:', formData);
-      // Here you can add additional submit logic if needed
+
+      
       alert('Form submitted successfully! Check the console for data.');
     }
   };
 
-  // Calculate progress percentage
+
+  
   const progress = ((currentSectionIndex + 1) / form.sections.length) * 100;
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">{form.formTitle}</h1>
+
       
-      {/* Progress bar */}
       <div className="mb-8">
         <div className="flex justify-between text-xs mb-1">
           <span>Section {currentSectionIndex + 1} of {form.sections.length}</span>
