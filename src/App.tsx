@@ -13,7 +13,7 @@ function App() {
   const handleLoginSuccess = async (userData: User, formData: Form) => {
     setUser(userData);
     setForm(formData);
-    UserAtom.user = userData; // Store user in the atom
+    UserAtom.user = userData; 
   };
 
   return (
