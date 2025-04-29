@@ -97,16 +97,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess, setUser }) => {
           >
             Login
           </button>
-          <button
-            onClick={() => setIsLogin(false)}
-            className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-              !isLogin
-                ? 'bg-indigo-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
-          >
-            Register
-          </button>
+          
         </div>
 
         {error && (
