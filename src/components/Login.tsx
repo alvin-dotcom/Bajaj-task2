@@ -57,11 +57,12 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess, setUser }) => {
         const response = await registerUser(formData);
         if (response.success) {
           setSuccessMessage('Registration successful!');
-          setUser(formData);
+          
           setTimeout(() => {
             setIsLogin(true); 
             setFormData({ rollNumber: '', name: '' });
-          }, 1500);
+            setSuccessMessage(null); 
+          }, 3000);
         } else {
           setError(response.message);
         }
@@ -69,6 +70,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess, setUser }) => {
       
     
     } catch (err) {
+      console.error('Unexpected error:', err);
       setError(err instanceof Error ? err.message : `An error occurred during ${isLogin ? 'login' : 'registration'}`);
     } finally {
       setLoading(false);
