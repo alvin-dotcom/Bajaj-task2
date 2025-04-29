@@ -50,8 +50,6 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess, setUser }) => {
         setSuccessMessage('Login successful!');
         setUser(formData);
         setTimeout(() => {
-          setIsLogin(true);
-          setFormData({ rollNumber: '', name: '' });
           onLoginSuccess(formData, formResponse.form); 
         }, 1500);
       } 
@@ -61,7 +59,8 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess, setUser }) => {
           setSuccessMessage('Registration successful!');
           setUser(formData);
           setTimeout(() => {
-            onLoginSuccess(formData, null); 
+            setIsLogin(true); 
+            setFormData({ rollNumber: '', name: '' });
           }, 1500);
         } else {
           setError(response.message);
